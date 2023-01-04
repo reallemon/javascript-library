@@ -5,4 +5,56 @@
 body {
   background-color: #111827;
   color: white;
+}
+
+.library {
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 30vw));
+  gap: 5vh 2vw;
+  justify-content: center;
+}
+
+.book {
+  background: #24283b;
+  border-radius: 1em;
+  box-shadow: 0.1em 0.1em 1em #414868;
+  display: grid;
+}
+
+.title {
+  background: #414868;
+  margin: 0;
+  padding: 0.6em 0;
+  border-radius: 0.6em 0.6em 0.2em 0.2em;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.author {
+  font-size: 1.2rem;
+}
+.author::before {
+  content: "Author: ";
+  font-weight: 700;
+}
+
+.pages::before {
+  content: "Pages: ";
+  font-weight: 700;
+}
+
+.readStatus::before {
+  content: "Status: ";
+  font-weight: 700;
+  color: white;
+}
+
+.read {
+  color: green;
+}
+
+.unread {
+  color: red;
 }/*# sourceMappingURL=style.css.map */
