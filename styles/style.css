@@ -145,4 +145,9 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+.remove {
+  background: #1a1b26;
+  color: #a9b1d6;
 }/*# sourceMappingURL=style.css.map */

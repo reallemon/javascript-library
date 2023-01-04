@@ -156,3 +156,8 @@ button {
 .hidden {
   display: none;
 }
+
+.remove {
+  background: $darkestAccent;
+  color: $lightestAccent;
+}

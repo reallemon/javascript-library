@@ -22,7 +22,7 @@ function addBooksToPage() {
   const library = document.querySelector('.library');
   library.innerHTML = '';
 
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     const newBook = document.createElement('div');
     newBook.classList.add('book');
 
@@ -30,17 +30,43 @@ function addBooksToPage() {
     const author = createAuthor(book);
     const pages = createPages(book);
     const readStatus = createReadStatus(book);
+    const removeButton = createRemoveButton(index);
 
-    assembleBook(newBook, title, author, pages, readStatus);
+    assembleBook(newBook, title, author, pages, readStatus, removeButton);
 
     library.appendChild(newBook);
   });
 
-  function assembleBook(newBook, title, author, pages, readStatus) {
+  function createRemoveButton(index) {
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('remove');
+    const removeButtonText = document.createTextNode('Remove');
+    removeButton.appendChild(removeButtonText);
+    removeButton.setAttribute('type', 'button');
+    removeButton.setAttribute('data-library-index', index);
+
+    removeButton.addEventListener('click', () => {
+      const bookIndex = removeButton.getAttribute('data-library-index');
+      myLibrary.splice(bookIndex, 1);
+      addBooksToPage();
+    });
+
+    return removeButton;
+  }
+
+  function assembleBook(
+    newBook,
+    title,
+    author,
+    pages,
+    readStatus,
+    removeButton
+  ) {
     newBook.appendChild(title);
     newBook.appendChild(author);
     newBook.appendChild(pages);
     newBook.appendChild(readStatus);
+    newBook.appendChild(removeButton);
   }
 
   function createReadStatus(book) {
