@@ -51,6 +51,9 @@ body {
 }
 
 .readStatus {
+  display: flex;
+  gap: 0.6em;
+
   &::before {
     content: 'Status: ';
     font-weight: 700;
@@ -160,4 +163,9 @@ button {
 .remove {
   background: $darkestAccent;
   color: $lightestAccent;
+}
+
+.toggleButton {
+  margin-left: auto;
+  background: $lighterAccent;
 }

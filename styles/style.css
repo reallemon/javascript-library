@@ -45,6 +45,10 @@ body {
   font-weight: 700;
 }
 
+.readStatus {
+  display: flex;
+  gap: 0.6em;
+}
 .readStatus::before {
   content: "Status: ";
   font-weight: 700;
@@ -150,4 +154,9 @@ button:hover {
 .remove {
   background: #1a1b26;
   color: #a9b1d6;
+}
+
+.toggleButton {
+  margin-left: auto;
+  background: #9aa5ce;
 }/*# sourceMappingURL=style.css.map */

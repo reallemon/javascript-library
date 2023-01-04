@@ -12,6 +12,11 @@ Book.prototype.info = function info() {
   return `${this.title} by ${this.author}, ${this.numPages} pages, ${isItRead}.`;
 };
 
+Book.prototype.toggleRead = function toggleRead() {
+  this.haveRead = !this.haveRead;
+  return this.haveRead;
+};
+
 function addBookToLibrary(book) {
   if (!(book instanceof Book)) throw new TypeError("That's no book!");
 
@@ -29,7 +34,7 @@ function addBooksToPage() {
     const title = createTitle(book);
     const author = createAuthor(book);
     const pages = createPages(book);
-    const readStatus = createReadStatus(book);
+    const readStatus = createReadStatus(book, index);
     const removeButton = createRemoveButton(index);
 
     assembleBook(newBook, title, author, pages, readStatus, removeButton);
@@ -69,7 +74,7 @@ function addBooksToPage() {
     newBook.appendChild(removeButton);
   }
 
-  function createReadStatus(book) {
+  function createReadStatus(book, index) {
     const readStatus = document.createElement('p');
     readStatus.classList.add('readStatus');
     const isItRead = book.haveRead ? 'Aleady read' : 'Not read yet';
@@ -77,6 +82,18 @@ function addBooksToPage() {
     readStatus.classList.add(status);
     const readText = document.createTextNode(isItRead);
     readStatus.appendChild(readText);
+
+    const toggleReadButton = document.createElement('button');
+    const toggleReadButtonText = document.createTextNode('Toggle Status');
+    toggleReadButton.classList.add('toggleButton');
+    toggleReadButton.appendChild(toggleReadButtonText);
+    toggleReadButton.setAttribute('data-library-index', index);
+    toggleReadButton.addEventListener('click', () => {
+      myLibrary[index].toggleRead();
+      addBooksToPage();
+    });
+
+    readStatus.appendChild(toggleReadButton);
     return readStatus;
   }
 
@@ -136,13 +153,3 @@ addBook.addEventListener('click', () => {
   addBooksToPage();
   toggleForm();
 });
-
-// ======= Placeholder Content for testing
-
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-const theHobbit3 = new Book('The Hobbitter', 'J.R.R. Tolkien', 295, true);
-
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit3);
-
-addBooksToPage();
