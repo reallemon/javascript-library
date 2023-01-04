@@ -20,7 +20,7 @@ body {
 .book {
   background: $darkAccent;
   border-radius: 1em;
-  box-shadow: 0.1em 0.1em 1em $lightAccent;
+  box-shadow: 0 0 1em $lightAccent;
   display: grid;
 }
 
@@ -64,4 +64,85 @@ body {
 
 .unread {
   color: red;
+}
+
+.wrapper {
+  display: grid;
+}
+
+.newBook {
+  justify-self: center;
+}
+
+.bookSubmission {
+  display: grid;
+  justify-self: center;
+  row-gap: 0.3em;
+  transition: 0.5s;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+label:not(.switch),
+.sliderLabel {
+  background: $lightAccent;
+  border-radius: 1em 0 0 1em;
+  font-size: 1.1rem;
+  padding: 0.3em;
+}
+
+input[type='text'],
+input[type='number'] {
+  background: $darkAccent;
+  border: none;
+  border-radius: 0 1em 1em 0;
+  color: white;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.formRow:has(input:not(.switch):focus-visible) {
+  border-radius: 1em;
+  box-shadow: 0 0 0.3em 0.1em $lightestAccent;
+  transition: 0.2s;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-end: span 2;
+  cursor: pointer;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none;
+}
+
+.slider {
+  transition: 1s;
+  cursor: pointer;
+  background-image: linear-gradient(to right, green 40%, red 60%);
+
+  background-size: 300% 100%;
+  transition: background-position 0.5s;
+  background-position: 100%;
+  border-radius: 3em 0 3em 0;
+
+  justify-self: center;
+  width: 50%;
+}
+
+.switch input:checked + .slider {
+  background-position: 0;
+}
+
+.switch input:indeterminate + .slider {
+  background-position: 100%;
 }
