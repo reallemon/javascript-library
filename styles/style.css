@@ -124,16 +124,25 @@ input[type=number]:focus-visible {
   background-image: linear-gradient(to right, green 40%, red 60%);
   background-size: 300% 100%;
   transition: background-position 0.5s;
-  background-position: 100%;
+  background-position: 60%;
   border-radius: 3em 0 3em 0;
   justify-self: center;
   width: 50%;
 }
 
 .switch input:checked + .slider {
-  background-position: 0;
+  background-position: 25%;
 }
 
-.switch input:indeterminate + .slider {
-  background-position: 100%;
+button {
+  background: #414868;
+  border: none;
+  border-radius: 0.5em;
+}
+button:hover {
+  background: #9aa5ce;
+}
+
+.hidden {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

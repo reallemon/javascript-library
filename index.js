@@ -20,6 +20,7 @@ function addBookToLibrary(book) {
 
 function addBooksToPage() {
   const library = document.querySelector('.library');
+  library.innerHTML = '';
 
   myLibrary.forEach((book) => {
     const newBook = document.createElement('div');
@@ -77,6 +78,40 @@ function addBooksToPage() {
     return title;
   }
 }
+
+const newBook = document.querySelector('.newBook');
+const newBookForm = document.querySelector('.bookSubmission');
+
+function toggleForm() {
+  newBookForm.classList.toggle('hidden');
+
+  if (newBook.textContent === 'New Book') {
+    newBook.textContent = 'Cancel Book';
+  } else {
+    newBook.textContent = 'New Book';
+    newBookForm.reset();
+  }
+}
+
+newBook.addEventListener('click', () => {
+  toggleForm();
+});
+
+const addBook = document.querySelector('.submit');
+addBook.addEventListener('click', () => {
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const pages = document.querySelector('#pages').value;
+  const hasRead = document.querySelector('#read').checked;
+
+  const submittedBook = new Book(title, author, pages, hasRead);
+  myLibrary.push(submittedBook);
+
+  addBooksToPage();
+  toggleForm();
+});
+
+// ======= Placeholder Content for testing
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 const theHobbit3 = new Book('The Hobbitter', 'J.R.R. Tolkien', 295, true);
