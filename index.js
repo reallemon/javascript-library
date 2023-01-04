@@ -25,21 +25,24 @@ function addBooksToPage() {
     const newBook = document.createElement('div');
     newBook.classList.add('book');
 
-    const title = document.createElement('h3');
-    title.classList.add('title');
-    const titleText = document.createTextNode(book.title);
-    title.appendChild(titleText);
+    const title = createTitle(book);
+    const author = createAuthor(book);
+    const pages = createPages(book);
+    const readStatus = createReadStatus(book);
 
-    const author = document.createElement('p');
-    author.classList.add('author');
-    const authorText = document.createTextNode(book.author);
-    author.appendChild(authorText);
+    assembleBook(newBook, title, author, pages, readStatus);
 
-    const pages = document.createElement('small');
-    pages.classList.add('pages');
-    const pagesText = document.createTextNode(book.numPages);
-    pages.appendChild(pagesText);
+    library.appendChild(newBook);
+  });
 
+  function assembleBook(newBook, title, author, pages, readStatus) {
+    newBook.appendChild(title);
+    newBook.appendChild(author);
+    newBook.appendChild(pages);
+    newBook.appendChild(readStatus);
+  }
+
+  function createReadStatus(book) {
     const readStatus = document.createElement('p');
     readStatus.classList.add('readStatus');
     const isItRead = book.haveRead ? 'Aleady read' : 'Not read yet';
@@ -47,12 +50,30 @@ function addBooksToPage() {
     readStatus.classList.add(status);
     const readText = document.createTextNode(isItRead);
     readStatus.appendChild(readText);
+    return readStatus;
+  }
 
-    newBook.appendChild(title);
-    newBook.appendChild(author);
-    newBook.appendChild(pages);
-    newBook.appendChild(readStatus);
+  function createPages(book) {
+    const pages = document.createElement('small');
+    pages.classList.add('pages');
+    const pagesText = document.createTextNode(book.numPages);
+    pages.appendChild(pagesText);
+    return pages;
+  }
 
-    library.appendChild(newBook);
-  });
+  function createAuthor(book) {
+    const author = document.createElement('p');
+    author.classList.add('author');
+    const authorText = document.createTextNode(book.author);
+    author.appendChild(authorText);
+    return author;
+  }
+
+  function createTitle(book) {
+    const title = document.createElement('h3');
+    title.classList.add('title');
+    const titleText = document.createTextNode(book.title);
+    title.appendChild(titleText);
+    return title;
+  }
 }
