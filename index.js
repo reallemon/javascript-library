@@ -77,3 +77,11 @@ function addBooksToPage() {
     return title;
   }
 }
+
+const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
+const theHobbit3 = new Book('The Hobbitter', 'J.R.R. Tolkien', 295, true);
+
+addBookToLibrary(theHobbit);
+addBookToLibrary(theHobbit3);
+
+addBooksToPage();

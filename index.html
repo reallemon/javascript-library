@@ -13,6 +13,32 @@
     <script src="index.js" defer></script>
   </head>
   <body>
-    <div class="library"></div>
+    <div class="wrapper">
+      <button type="button" class="newBook">NEW BOOK</button>
+      <form class="bookSubmission">
+        <div class="formRow">
+          <label for="title">Title</label>
+          <input type="text" id="title" />
+        </div>
+        <div class="formRow">
+          <label for="author">Author</label>
+          <input type="text" id="author" />
+        </div>
+        <div class="formRow">
+          <label for="pages">Number of Pages</label>
+          <input type="number" id="pages" />
+        </div>
+        <div class="formRow">
+          <label for="haveRead" class="switch">
+            <span class="sliderLabel">Read already?</span>
+            <input type="checkbox" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <button type="button" class="submit">Add Book</button>
+      </form>
+      <div class="library"></div>
+    </div>
   </body>
 </html>
